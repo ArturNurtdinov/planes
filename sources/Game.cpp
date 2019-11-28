@@ -9,6 +9,8 @@
 
 #include "headers/Player.hpp"
 #include "headers/Enemy.hpp"
+#include "headers/Health.hpp"
+#include "headers/Score.hpp"
 #include "headers/EnemySpawner.hpp"
 
 Game::Game(QWidget* parent) : QGraphicsView(parent)

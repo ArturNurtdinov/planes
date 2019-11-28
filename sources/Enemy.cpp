@@ -24,11 +24,6 @@ Enemy::Enemy(QGraphicsItem* parent) : Entity(parent)
   setRotation(180);
 
   game->enemies.push_back(this);
-
-  qtimer = new QTimer(this);
-  connect(qtimer, SIGNAL(timeout()), this, SLOT(move()));
-
-  qtimer->start(50);
 }
 
 void Enemy::move()
@@ -59,5 +54,8 @@ void Enemy::move()
 
 void Enemy::spawn()
 {
+  qtimer = new QTimer(this);
+  connect(qtimer, SIGNAL(timeout()), this, SLOT(move()));
 
+  qtimer->start(50);
 }

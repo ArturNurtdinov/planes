@@ -7,9 +7,8 @@
 #include <QTimer>
 #include <deque>
 
-#include "headers/Player.hpp"
-#include "headers/Score.hpp"
-#include "headers/Health.hpp"
+#include "headers/Entity.hpp"
+#include "headers/TextIntegerItem.hpp"
 
 class Game : public QGraphicsView
 {
@@ -20,9 +19,9 @@ public:
   void over();
 
   QGraphicsScene* scene;
-  Player* player;
-  Score* score;
-  Health* health;
+  Entity* player;
+  TextIntegerItem* score;
+  TextIntegerItem* health;
   QTimer* qtimer;
   std::deque<QGraphicsItem*> enemies;
 };

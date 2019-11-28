@@ -16,6 +16,7 @@ public slots:
   virtual void spawn() override;
 
 private:
+  QTimer* qtimer;
   QMediaPlayer* bulletsound;
 };
 

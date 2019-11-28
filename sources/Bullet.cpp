@@ -12,9 +12,6 @@ Bullet::Bullet(QGraphicsItem* parent) : Entity(parent)
 {
   setPixmap(QPixmap(":/images/missile.png"));
   setScale(0.05);
-  QTimer* qtimer = new QTimer();
-  connect(qtimer, SIGNAL(timeout()), this, SLOT(move()));
-  qtimer->start(50);
 
   bulletsound = new QMediaPlayer();
   bulletsound->setMedia(QUrl("qrc:/sounds/bullet_sound.wav"));
@@ -39,7 +36,7 @@ void Bullet::move()
   }
 
   setPos(x(), y() - 10);
-  if (pos().y() < 20)
+  if (pos().y() < 10)
   {
     scene()->removeItem(this);
     delete this;
@@ -50,4 +47,8 @@ void Bullet::spawn()
 {
   setPos(game->player->x() + 50, game->player->y());
   bulletsound->play();
+
+  qtimer = new QTimer();
+  connect(qtimer, SIGNAL(timeout()), this, SLOT(move()));
+  qtimer->start(50);
 }
