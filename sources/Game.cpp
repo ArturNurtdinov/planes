@@ -21,7 +21,7 @@ Game::~Game()
   delete scene;
   delete score;
   delete health;
-  delete qtimer;
+  delete enemyTimer;
   for (size_t i = 0; i < enemies.size(); ++i)
   {
     delete enemies.at(i);
@@ -53,15 +53,18 @@ void Game::show()
   scene->setBackgroundBrush(QBrush(QImage(":/images/bg.png")));
 
   EnemySpawner* spawner = new EnemySpawner();
-  qtimer = new QTimer(this);
-  QObject::connect(qtimer, SIGNAL(timeout()), spawner, SLOT(spawnEnemy()));
-  QObject::connect(qtimer, SIGNAL(timeout()), spawner, SLOT(spawnBoss()));
-  qtimer->start(2000);
+  enemyTimer = new QTimer(this);
+  QObject::connect(enemyTimer, SIGNAL(timeout()), spawner, SLOT(spawnEnemy()));
+  enemyTimer->start(1000);
+
+  bossTimer = new QTimer(this);
+  QObject::connect(bossTimer, SIGNAL(timeout()), spawner, SLOT(spawnBoss()));
+  bossTimer->start(3000);
 }
 
 void Game::over()
 {
-  qtimer->stop();
+  enemyTimer->stop();
   scene->removeItem(player);
   delete player;
   for (size_t i = 0; i < enemies.size(); ++i)

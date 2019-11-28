@@ -22,7 +22,8 @@ public:
   Entity* player;
   TextIntegerItem* score;
   TextIntegerItem* health;
-  QTimer* qtimer;
+  QTimer* enemyTimer;
+  QTimer* bossTimer;
   std::deque<QGraphicsItem*> enemies;
 };
 
