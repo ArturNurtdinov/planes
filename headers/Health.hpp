@@ -7,7 +7,7 @@ class Health : public TextIntegerItem
 {
 public:
   Health(QGraphicsTextItem* parent = nullptr);
-  virtual void changeAndShow();
+  virtual void changeAndShow() override;
 };
 
 #endif // HEALTH_HPP

@@ -1,6 +1,8 @@
 #ifndef BULLET_H
 #define BULLET_H
 
+#include <QMediaPlayer>
+
 #include "headers/Entity.hpp"
 
 class Bullet : public Entity
@@ -11,6 +13,10 @@ public:
   ~Bullet() = default;
 public slots:
   void move();
+  virtual void spawn() override;
+
+private:
+  QMediaPlayer* bulletsound;
 };
 
 #endif // BULLET_H

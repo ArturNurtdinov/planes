@@ -10,6 +10,7 @@ class Entity : public QObject, public QGraphicsPixmapItem
 public:
   Entity(QGraphicsItem* parent) : QObject(), QGraphicsPixmapItem(parent) {}
   virtual ~Entity() = default;
+  virtual void spawn() = 0;
 };
 
 #endif // ENTITY_HPP

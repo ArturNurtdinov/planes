@@ -56,3 +56,8 @@ void Enemy::move()
     delete this;
   }
 }
+
+void Enemy::spawn()
+{
+
+}

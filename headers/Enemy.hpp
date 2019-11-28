@@ -8,9 +8,9 @@ class Enemy : public Entity
   Q_OBJECT
 public:
   Enemy(QGraphicsItem* parent = nullptr);
-  ~Enemy() = default;
 public slots:
   void move();
+  virtual void spawn() override;
 
 private:
   QTimer* qtimer;

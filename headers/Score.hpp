@@ -7,7 +7,7 @@ class Score : public TextIntegerItem
 {
 public:
   Score(QGraphicsTextItem* parent = nullptr);
-  virtual void changeAndShow();
+  virtual void changeAndShow() override;
 };
 
 #endif // SCORE_HPP

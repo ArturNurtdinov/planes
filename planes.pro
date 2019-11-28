@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     sources/Bullet.cpp \
+    sources/EnemySpawner.cpp \
     sources/Game.cpp \
     sources/Enemy.cpp \
     sources/Health.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 
 HEADERS += \
     headers/Bullet.hpp \
+    headers/EnemySpawner.hpp \
     headers/Game.hpp \
     headers/Enemy.hpp \
     headers/Health.hpp \

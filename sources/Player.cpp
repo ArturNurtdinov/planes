@@ -2,6 +2,7 @@
 #include "headers/Enemy.hpp"
 
 #include <QKeyEvent>
+#include <QTimer>
 #include <QGraphicsScene>
 #include "headers/Bullet.hpp"
 
@@ -9,9 +10,6 @@ Player::Player(QGraphicsItem* parent) : Entity(parent)
 {
   setPixmap(QPixmap(":/images/player.png"));
   setScale(0.5);
-
-  bulletsound = new QMediaPlayer();
-  bulletsound->setMedia(QUrl("qrc:/sounds/bullet_sound.wav"));
 }
 
 void Player::keyPressEvent(QKeyEvent* event)
@@ -33,15 +31,14 @@ void Player::keyPressEvent(QKeyEvent* event)
   else if (event->key() == Qt::Key_Space)
   {
     Bullet* bullet = new Bullet();
-    bullet->setPos(x() + 50, y());
+    bullet->spawn();
     scene()->addItem(bullet);
-
-    bulletsound->play();
   }
 }
 
 void Player::spawn()
 {
-  Enemy* enemy = new Enemy();
-  scene()->addItem(enemy);
+  setPos(300, 500);
+  setFlag(QGraphicsItem::ItemIsFocusable);
+  setFocus();
 }

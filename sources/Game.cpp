@@ -8,6 +8,8 @@
 #include <QImage>
 
 #include "headers/Player.hpp"
+#include "headers/Enemy.hpp"
+#include "headers/EnemySpawner.hpp"
 
 Game::Game(QWidget* parent) : QGraphicsView(parent)
 {}
@@ -29,9 +31,7 @@ void Game::show()
 {
   scene = new QGraphicsScene();
   player = new Player();
-  player->setPos(300, 500);
-  player->setFlag(QGraphicsItem::ItemIsFocusable);
-  player->setFocus();
+  player->spawn();
   scene->addItem(player);
 
   score = new Score();
@@ -50,8 +50,9 @@ void Game::show()
   scene->setSceneRect(0, 0, 800, 600);
   scene->setBackgroundBrush(QBrush(QImage(":/images/bg.png")));
 
+  EnemySpawner* spawner = new EnemySpawner();
   qtimer = new QTimer();
-  QObject::connect(qtimer, SIGNAL(timeout()), player, SLOT(spawn()));
+  QObject::connect(qtimer, SIGNAL(timeout()), spawner, SLOT(spawn()));
   qtimer->start(1000);
 }
 
