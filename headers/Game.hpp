@@ -7,7 +7,7 @@
 #include <QTimer>
 #include <deque>
 
-#include "headers/Entity.hpp"
+#include "headers/Player.hpp"
 #include "headers/TextIntegerItem.hpp"
 
 class Game : public QGraphicsView
@@ -19,7 +19,7 @@ public:
   void over();
 
   QGraphicsScene* scene;
-  Entity* player;
+  Player* player;
   TextIntegerItem* score;
   TextIntegerItem* health;
   QTimer* enemyTimer;

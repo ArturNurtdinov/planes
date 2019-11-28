@@ -22,6 +22,7 @@ Game::~Game()
   delete score;
   delete health;
   delete enemyTimer;
+  delete bossTimer;
   for (size_t i = 0; i < enemies.size(); ++i)
   {
     delete enemies.at(i);

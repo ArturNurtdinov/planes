@@ -5,6 +5,7 @@
 
 #include "headers/Enemy.hpp"
 #include "headers/Game.hpp"
+#include "headers/Player.hpp"
 #include "headers/Boss.hpp"
 
 extern Game* game;
@@ -51,6 +52,11 @@ void Bullet::move()
       delete this;
       return;
     }
+  }
+
+  if (game->score->get() > 100)
+  {
+    game->player->setUpgrade(true);
   }
 
   setPos(x(), y() - 10);

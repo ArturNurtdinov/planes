@@ -13,6 +13,10 @@ public:
   Player(QGraphicsItem* parent = nullptr);
   void keyPressEvent(QKeyEvent* event) override;
   virtual void spawn() override;
+  void setUpgrade(bool upgrade);
+
+private:
+  bool isUpgraded;
 };
 
 #endif // MYRECT_HPP

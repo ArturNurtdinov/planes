@@ -10,6 +10,8 @@ Player::Player(QGraphicsItem* parent) : Entity(parent)
 {
   setPixmap(QPixmap(":/images/player.png"));
   setScale(0.5);
+
+  isUpgraded = false;
 }
 
 void Player::keyPressEvent(QKeyEvent* event)
@@ -30,9 +32,24 @@ void Player::keyPressEvent(QKeyEvent* event)
   }
   else if (event->key() == Qt::Key_Space)
   {
-    Bullet* bullet = new Bullet();
-    bullet->spawn();
-    scene()->addItem(bullet);
+    if (!isUpgraded)
+    {
+      Bullet* bullet = new Bullet();
+      bullet->spawn();
+      scene()->addItem(bullet);
+    }
+    else
+    {
+      Bullet* first = new Bullet();
+      first->spawn();
+      first->setPos(x() + 25, y());
+      scene()->addItem(first);
+
+      Bullet* second = new Bullet();
+      second->spawn();
+      second->setPos(x() + 75, y());
+      scene()->addItem(second);
+    }
   }
 }
 
@@ -41,4 +58,9 @@ void Player::spawn()
   setPos(300, 500);
   setFlag(QGraphicsItem::ItemIsFocusable);
   setFocus();
+}
+
+void Player::setUpgrade(bool upgrade)
+{
+  isUpgraded = upgrade;
 }
