@@ -1,8 +1,6 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include <QMediaPlayer>
-
 #include "headers/Entity.hpp"
 
 class Bullet : public Entity
@@ -17,7 +15,6 @@ public slots:
 
 private:
   QTimer* qtimer;
-  QMediaPlayer* bulletsound;
 };
 
 #endif // BULLET_H
