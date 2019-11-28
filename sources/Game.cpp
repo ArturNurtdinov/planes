@@ -11,7 +11,6 @@
 #include "headers/Enemy.hpp"
 #include "headers/Health.hpp"
 #include "headers/Score.hpp"
-#include "headers/EnemySpawner.hpp"
 
 Game::Game(QWidget* parent) : QGraphicsView(parent)
 {}
@@ -53,14 +52,14 @@ void Game::show()
   scene->setSceneRect(0, 0, 800, 600);
   scene->setBackgroundBrush(QBrush(QImage(":/images/bg.png")));
 
-  EnemySpawner* spawner = new EnemySpawner();
+  spawner = new EnemySpawner();
   enemyTimer = new QTimer(this);
   QObject::connect(enemyTimer, SIGNAL(timeout()), spawner, SLOT(spawnEnemy()));
   enemyTimer->start(1000);
 
   bossTimer = new QTimer(this);
   QObject::connect(bossTimer, SIGNAL(timeout()), spawner, SLOT(spawnBoss()));
-  bossTimer->start(3000);
+  bossTimer->start(2800);
 }
 
 void Game::over()

@@ -8,6 +8,7 @@
 #include <deque>
 
 #include "headers/Player.hpp"
+#include "headers/EnemySpawner.hpp"
 #include "headers/TextIntegerItem.hpp"
 
 class Game : public QGraphicsView
@@ -24,6 +25,7 @@ public:
   TextIntegerItem* health;
   QTimer* enemyTimer;
   QTimer* bossTimer;
+  EnemySpawner* spawner;
   std::deque<QGraphicsItem*> enemies;
 };
 

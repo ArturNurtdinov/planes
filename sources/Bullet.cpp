@@ -51,7 +51,7 @@ void Bullet::move()
     }
   }
 
-  if (game->score->get() > 100)
+  if (game->score->get() > 50)
   {
     game->player->setUpgrade(true);
   }
