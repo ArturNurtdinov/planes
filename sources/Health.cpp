@@ -14,9 +14,9 @@ Health::Health(QGraphicsTextItem* parent) : TextIntegerItem(parent)
   setFont(QFont("times", 16));
 }
 
-void Health::changeAndShow()
+void Health::changeAndShow(int amount)
 {
-  number--;
+  number += amount;
   setPlainText(QString("Health: ") + QString::number(number));
 
   if (number == 0)

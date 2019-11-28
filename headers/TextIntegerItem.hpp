@@ -9,7 +9,7 @@ public:
   TextIntegerItem(QGraphicsTextItem* parent = nullptr) : QGraphicsTextItem(parent)
   {}
 
-  virtual void changeAndShow() = 0;
+  virtual void changeAndShow(int amount) = 0;
   int get()
   {
     return number;
