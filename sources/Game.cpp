@@ -53,19 +53,23 @@ void Game::show()
   scene->setBackgroundBrush(QBrush(QImage(":/images/bg.png")));
 
   EnemySpawner* spawner = new EnemySpawner();
-  qtimer = new QTimer();
-  QObject::connect(qtimer, SIGNAL(timeout()), spawner, SLOT(spawn()));
-  qtimer->start(1000);
+  qtimer = new QTimer(this);
+  QObject::connect(qtimer, SIGNAL(timeout()), spawner, SLOT(spawnEnemy()));
+  QObject::connect(qtimer, SIGNAL(timeout()), spawner, SLOT(spawnBoss()));
+  qtimer->start(2000);
 }
 
 void Game::over()
 {
   qtimer->stop();
+  scene->removeItem(player);
+  delete player;
   for (size_t i = 0; i < enemies.size(); ++i)
   {
     if (enemies.at(i) != nullptr)
     {
       scene->removeItem(enemies.at(i));
+      delete enemies.at(i);
     }
   }
 }

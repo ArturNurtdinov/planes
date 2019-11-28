@@ -5,6 +5,7 @@
 
 #include "headers/Enemy.hpp"
 #include "headers/Game.hpp"
+#include "headers/Boss.hpp"
 
 extern Game* game;
 
@@ -28,10 +29,27 @@ void Bullet::move()
       scene()->removeItem(this);
 
       game->enemies.erase(std::remove(game->enemies.begin(), game->enemies.end(), colliding_items[i]), game->enemies.end());
-      game->score->changeAndShow();
+      game->score->changeAndShow(1);
 
       delete colliding_items[i];
       delete this;
+      return;
+    }
+    else if (typeid(*(colliding_items[i])) == typeid(Boss))
+    {
+      dynamic_cast<Boss*>(colliding_items[i])->decreaseHealth();
+      if (dynamic_cast<Boss*>(colliding_items[i])->getHealth() == 0)
+      {
+        scene()->removeItem(colliding_items[i]);
+
+        game->enemies.erase(std::remove(game->enemies.begin(), game->enemies.end(), colliding_items[i]), game->enemies.end());
+        game->score->changeAndShow(5);
+
+        delete colliding_items[i];
+      }
+      scene()->removeItem(this);
+      delete this;
+      return;
     }
   }
 

@@ -18,14 +18,14 @@ void Player::keyPressEvent(QKeyEvent* event)
   {
     if (pos().x() + 50 > 0)
     {
-      setPos(x() - 15, y());
+      setPos(x() - 20, y());
     }
   }
   else if (event->key() == Qt::Key_Right)
   {
     if (pos().x() < 700)
     {
-      setPos(x() + 15, y());
+      setPos(x() + 20, y());
     }
   }
   else if (event->key() == Qt::Key_Space)

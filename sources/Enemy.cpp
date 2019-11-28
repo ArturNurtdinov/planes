@@ -2,8 +2,6 @@
 
 #include <QTimer>
 #include <QGraphicsScene>
-#include <QGraphicsTextItem>
-#include <QFont>
 #include <QList>
 #include <stdlib.h>
 #include <algorithm>
@@ -28,25 +26,25 @@ Enemy::Enemy(QGraphicsItem* parent) : Entity(parent)
 
 void Enemy::move()
 {
-  setPos(x(), y() + 5);
+  setPos(x(), y() + 4);
   QList<QGraphicsItem*> colliding_items = collidingItems();
   for (int i = 0; i < colliding_items.size(); ++i)
   {
     if (typeid(*(colliding_items[i])) == typeid(Player))
     {
-      game->health->changeAndShow();
+      game->health->changeAndShow(-1);
       game->enemies.erase(std::remove(game->enemies.begin(), game->enemies.end(), this), game->enemies.end());
       scene()->removeItem(this);
       delete this;
       if (game->health->get() == 0)
       {
         game->over();
-        delete colliding_items[i];
       }
     }
   }
   if (pos().y() > 600)
   {
+    game->enemies.erase(std::remove(game->enemies.begin(), game->enemies.end(), this), game->enemies.end());
     scene()->removeItem(this);
     delete this;
   }

@@ -1,13 +1,14 @@
-#ifndef ENEMYSPAWNER_H
-#define ENEMYSPAWNER_H
+#ifndef ENEMYSPAWNER_HPP
+#define ENEMYSPAWNER_HPP
 
 #include <QObject>
 
 class EnemySpawner : public QObject
 {
   Q_OBJECT
-  public slots:
-      void spawn();
+public slots:
+  void spawnEnemy();
+  void spawnBoss();
 };
 
-#endif // ENEMYSPAWNER_H
+#endif // ENEMYSPAWNER_HPP

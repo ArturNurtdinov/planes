@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
+    sources/Boss.cpp \
     sources/Bullet.cpp \
     sources/EnemySpawner.cpp \
     sources/Game.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
     sources/Player.cpp \
 
 HEADERS += \
+    headers/Boss.hpp \
     headers/Bullet.hpp \
     headers/EnemySpawner.hpp \
     headers/Game.hpp \
