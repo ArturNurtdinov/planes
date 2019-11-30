@@ -14,5 +14,3 @@ public:
 };
 
 #endif // ENTITY_HPP
-
-//move, spawn
